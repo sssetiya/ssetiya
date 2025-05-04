@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IRMAN </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
+   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://unblast.com/wp-content/uploads/2021/01/Space-Background-Image-2-1536x1024.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+      padding: 0 20px 40px 20px;
+    }
+    .header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      flex-grow: 1;
+    }
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+    .icon {
+      color: #FFFFFF;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .icon:hover {
+      color: #FFD700;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+    .card-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 180px;
+      height: 320px;
+      position: relative;
+    }
+    .card-item {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+      box-shadow: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .card-item.active {
+      display: flex;
+      opacity: 1;
+      position: relative;
+    }
+    .card-image {
+      width: 180px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 0;
+      user-select: none;
+    }
+    .card-button {
+      margin-top: 1px;
+      cursor: pointer;
+      background-color: black;
+      border: 1px solid white;
+      color: white;
+      font-size: 28px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 16px;
+    }
+    .card-button:hover {
+      background-color: white;
+      color: black;
+    }
+    @media (max-width: 600px) {
+      .container {
+        height: 60vh;
+      }
+      .card-list {
+        width: 120px;
+        height: 213px;
+      }
+      .card-image {
+        width: 120px;
+        height: 213px;
+      }
+      .card-button {
+        font-size: 24px;
+        padding: 8px 16px;
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    /* Content section dimodifikasi */
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      background-color: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.9);
+      border: 2px solid #FFD700;
+    }
+    .content-section h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 26px;
+      border-bottom: 3px solid #FFD700;
+      padding-bottom: 10px;
+    }
+    .content-section h3 {
+      color: #FFD700;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+    .content-section p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .content-section a {
+      color: #FFD700;
+      text-decoration: underline;
+    }
+    .content-section a:hover {
+      color: #FFA500;
+    }
+    .content-section table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 2px solid white;
+      background-color: rgba(255, 255, 255, 0.05);
+      margin-top: 20px;
+    }
+    .content-section th, .content-section td {
+      border: 1px solid white;
+      padding: 14px;
+      text-align: left;
+      font-size: 16px;
+    }
+    .content-section th {
+      background-color: rgba(255, 215, 0, 0.4);
+      font-size: 17px;
+      font-weight: bold;
+    }
+    /* Styling untuk list */
+    .content-section ul, .content-section ol {
+      margin: 0 0 20px 25px;
+      padding: 0;
+    }
+    .content-section ul li, .content-section ol li {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+    .content-section ul {
+      list-style-type: disc;
+    }
+    .content-section ol {
+      list-style-type: decimal;
+    }
+    /* Style untuk custom list icon */
+    .custom-list {
+      list-style-type: none;
+      margin: 0 0 20px 5px;
+      padding: 0;
+    }
+    .custom-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    .custom-list li:before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      color: #FFD700;
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">IRMAN PRASETIYA</div>
+        <div class="icons">
+            <div class="icon">💬</div>
+            <div class="icon">✨</div>
+            <div class="icon">≡</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card-wrapper">
+            <ul class="card-list" id="cardList">
+                <li class="card-item active">
+                    <img src="slide1.jpg" alt="Gambar 1" class="card-image" />
+                    <span class="card-button material-symbols-rounded">></span>
+                </li>
+                <li class="card-item">
+                    <img src="slide2.jpg" alt="Gambar 2" class="card-image" />
+                    <span class="card-button material-symbols-rounded">></span>
+                </li>
+                <li class="card-item">
+                    <img src="slide3.jpg" alt="Gambar 3" class="card-image" />
+                    <span class="card-button material-symbols-rounded">></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+     <div class="content-section">
+    <h2>About IRMAN PRASETIYA</h2>
+    <p>Selamat datang di situs personal IRMAN PRASETIYA. Situs ini berisi galeri foto dan informasi tentang saya.</p>
+    
+    <h3>Keahlian</h3>
+    <ul>
+        <li>Desain Grafis menggunakan Adobe Photoshop dan Illustrator</li>
+        <li>Menjadi anomali dalam game kompe</li>
+        <li>Menjadi Patem</li>
+        <li>Kebal roasting,cacian dan makian</li>
+    </ul>
+    
+    <h3>Riwayat Pendidikan</h3>
+    <ol>
+        <li>Lulusan SMK Phocinki 1 Erangel (2021-2024)</li>
+    </ol>
+    
+    <h3>Hobi & Minat</h3>
+    <div class="custom-list">
+        <li>Fotografi landscape dan portrait</li>
+        <li>Makan</li>
+        <li>Mendengarkan musik dan menonton film</li>
+    </div>
+
+    <p>Untuk informasi lebih lanjut, kunjungi <a href="https://www.instagram.com/sssetiya_?igsh=MXBibWJuZDFnb3E5YQ==" target="_blank" rel="noopener noreferrer">sosial media saya</a>.</p>
+    
+    <h3>list karya</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Karya</th>
+          <th>Tahun</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Slide 1</td>
+          <td>2022</td>
+          <td>Membuat grafic design untuk personal</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Slide 2</td>
+          <td>2023</td>
+          <td>Membuat poster pengiklanan</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>slide 3</td>
+          <td>2024</td>
+          <td>Membuat grafic design untuk postingan ig</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<script>
+    const cardItems = document.querySelectorAll('.card-item');
+    let currentIndex = 0;
+    const total = cardItems.length;
+
+    function showCard(index) {
+        cardItems.forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextCard() {
+        currentIndex = (currentIndex + 1) % total;
+        showCard(currentIndex);
+    }
+
+    document.querySelectorAll('.card-button').forEach(button=>{
+        button.addEventListener('click', e=>{
+            e.preventDefault();
+            nextCard();
+        });
+    });
+</script>
+</body>
+</html>

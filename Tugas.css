@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+    align-items: center; /* Pusatkan secara vertikal */
+    height: 100vh; /* Mengatur tinggi kontainer agar memenuhi layar */
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center; /* Pusatkan secara horizontal */
+}
+
+.card-list {
+    list-style: none; /* Menghilangkan bullet point */
+    padding: 0; /* Menghilangkan padding */
+}
+
+.card-item {
+    display: flex;
+    flex-direction: column; /* Mengatur gambar dan tombol dalam kolom */
+    align-items: center; /* Pusatkan item dalam kolom */
+}
+
+.card-image {
+    max-width: 100%; /* Mengatur lebar gambar agar responsif */
+    height: auto; /* Mengatur tinggi gambar secara otomatis */
+}
